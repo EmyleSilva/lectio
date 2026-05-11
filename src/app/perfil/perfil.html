@@ -1,0 +1,144 @@
+<div class="perfil-page">
+  <header class="perfil-header">
+    <div class="header-left">
+      <a routerLink="/login" class="back-button" title="Voltar">
+        ←
+      </a>
+      <div>
+        <h1>Meu Perfil</h1>
+        <p>Visualize e gerencie sua conta</p>
+      </div>
+    </div>
+
+    <button class="edit-button">Editar perfil</button>
+  </header>
+
+  <main class="perfil-grid">
+    <section class="profile-card">
+      <div class="avatar-wrapper">
+        <img
+          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400"
+          alt="Foto de perfil"
+        />
+      </div>
+
+      <div class="profile-info">
+        <h2>Lucas Romero</h2>
+        <span class="username">@lucas.leitor29</span>
+        <p>
+          Argentino, 31 anos, estudante da Universidade Federal de Minas Gerais,
+          gosta de ler por lazer no transporte e antes de dormir.
+        </p>
+      </div>
+
+      <div class="profile-stats">
+        <div>
+          <strong>9</strong>
+          <span>Lidos</span>
+        </div>
+        <div>
+          <strong>3</strong>
+          <span>Lendo</span>
+        </div>
+        <div>
+          <strong>1</strong>
+          <span>Quero Ler</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lists-card">
+      <div class="section-title">
+        <h2>Minhas Listas</h2>
+        <span>Categorias</span>
+      </div>
+
+      <form class="lists-form" (submit)="addList(); $event.preventDefault()">
+        <input
+          type="text"
+          placeholder="Criar nova lista, ex: Infantis"
+          [value]="newList()"
+          (input)="updateNewList($event.target.value)"
+        />
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <div class="list-grid">
+        <article class="list-folder" *ngFor="let list of lists(); let i = index">
+          <div class="folder-left">
+            <span class="folder-icon">📁</span>
+            <div>
+              <strong>{{ list }}</strong>
+              
+            </div>
+          </div>
+          <div class="folder-actions">
+            <button type="button" class="open-link">Abrir</button>
+            <button type="button" class="remove-button" (click)="removeList(i)">✕</button>
+          </div>
+        </article>
+        <p class="empty-state" *ngIf="lists().length === 0">Nenhuma lista criada ainda.</p>
+      </div>
+    </section>
+
+    <section class="favorites-card">
+      <div class="section-title">
+        <h2>Favoritos da Vida</h2>
+      </div>
+
+      <div class="favorite-list">
+        <article class="favorite-item">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=200" alt="O Hobbit" />
+          <div>
+            <p class="comment">★★★★</p>
+            <strong>O Hobbit</strong>
+            <span>J. R. R. Tolkien</span>
+          </div>
+        </article>
+
+        <article class="favorite-item">
+          <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=200" alt="A Guerra da Papoula" />
+          <div>
+            <p class="comment">★</p>
+            <strong>A Guerra da Papoula</strong>
+            <span>R. F. Kuang</span>
+          </div>
+        </article>
+
+        <article class="favorite-item">
+          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=200" alt="Katabasis" />
+          <div>
+            <p class="comment">★★★★★</p>
+            <strong>Katabasis</strong>
+            <span>R. F. Kuang</span>
+          </div>
+        </article>
+
+        <article class="favorite-item">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=200" alt="A República do Dragão" />
+          <div>
+            <p class="comment">★★★★</p>
+            <strong>A República do Dragão</strong>
+            <span>R. F. Kuang</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="activity-card">
+      <div class="section-title">
+        <h2>Minhas Atividades Recentes</h2>
+        <a href="#">Ver tudo</a>
+      </div>
+
+      <article class="activity-item">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=120" alt="O Hobbit" />
+        <div class="activity-details">
+          <p><strong>2 de dez.</strong> Avaliou <strong>O Hobbit</strong> de J. R. R. Tolkien</p>
+          <p class="comment">★★★★</p>
+          <p class="comment">“Um grande clássico!”</p>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
