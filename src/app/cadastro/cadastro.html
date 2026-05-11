@@ -1,5 +1,3 @@
-<!-- login.component.html -->
-
 <div class="login-container">
 
   <!-- LADO ESQUERDO -->
@@ -28,14 +26,23 @@
     <div class="login-card">
 
       <div class="header">
-        <h2>Entrar</h2>
+        <h2>Cadastre-se</h2>
 
         <p>
-          Faça login para acessar sua conta
+          Crie sua conta para organizar suas leituras
         </p>
       </div>
 
       <form>
+
+        <div class="input-group">
+          <label>Nome</label>
+
+          <input
+            type="text"
+            placeholder="Seu nome completo"
+          >
+        </div>
 
         <div class="input-group">
           <label>Email</label>
@@ -53,7 +60,7 @@
 
             <input
               type="password"
-              placeholder="Digite sua senha"
+              placeholder="Crie uma senha"
             >
 
             <button type="button">
@@ -63,19 +70,32 @@
           </div>
         </div>
 
-        <a href="#" class="forgot-password">
-          Esqueceu sua senha?
-        </a>
+        <div class="input-group">
+          <label>Confirmar Senha</label>
+
+          <div class="password-field">
+
+            <input
+              type="password"
+              placeholder="Confirme sua senha"
+            >
+
+            <button type="button">
+              👁
+            </button>
+
+          </div>
+        </div>
 
         <button class="login-button">
-          Entrar
+          Criar Conta
         </button>
 
       </form>
 
       <div class="register">
-        Ainda não possui conta?
-        <a routerLink="/cadastro">Cadastre-se</a>
+        Já possui conta?
+        <a routerLink="/login">Entrar</a>
       </div>
 
     </div>
