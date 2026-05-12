@@ -1,0 +1,391 @@
+/* Container que simula uma tela mobile mesmo em desktops */
+.mobile-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #faf9f5; /* Fundo off-white do Figma */
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #2f3748;
+  padding-bottom: 80px; /* Espaço da nav inferior */
+  box-shadow: 0 0 40px rgba(0,0,0,0.05); /* Sombra suave para destacar se visto no PC */
+}
+
+/* ========================================= */
+/* TIPOGRAFIA SERIFADA (Estilo Editorial) */
+/* ========================================= */
+.serif-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2f3748;
+  margin-bottom: 16px;
+}
+
+/* ========================================= */
+/* TOP BAR */
+/* ========================================= */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: transparent;
+}
+
+.avatar-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bell-btn {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========================================= */
+/* CONTEÚDO */
+/* ========================================= */
+.feed-content {
+  padding: 10px 24px 24px;
+}
+
+.section-block {
+  margin-bottom: 32px;
+}
+
+/* ========================================= */
+/* CONTINUAR LENDO (Cards Escuros) */
+/* ========================================= */
+.horizontal-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.horizontal-scroll::-webkit-scrollbar { display: none; } /* Esconde a barra de rolagem */
+
+.dark-card {
+  background-color: #333c4a;
+  color: white;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  min-width: 300px;
+  box-shadow: 0 10px 20px rgba(51, 60, 74, 0.2);
+}
+
+.secondary-card {
+  min-width: 100px;
+  opacity: 0.9;
+}
+
+.dark-card .book-cover {
+  width: 70px;
+  height: 105px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-header h3 {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  font-weight: normal;
+}
+
+.card-header .author {
+  color: #9ba4b5;
+  font-size: 0.85rem;
+}
+
+.play-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.progress-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #e07a5f;
+  border-radius: 10px;
+}
+
+.percent {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.pages-info {
+  font-size: 0.75rem;
+  color: #9ba4b5;
+  margin-top: 4px;
+}
+
+/* ========================================= */
+/* ESTATÍSTICAS (Meta & Sequência) */
+/* ========================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stat-title {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #8b92a0;
+  letter-spacing: 0.5px;
+}
+
+.stat-numbers strong {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  color: #2f3748;
+}
+
+.stat-numbers .total {
+  font-size: 1.2rem;
+  color: #a0a6b1;
+}
+
+.stat-progress {
+  height: 6px;
+  background: #2f3748;
+  border-radius: 10px;
+  margin: 12px 0 8px;
+}
+
+.stat-fill {
+  height: 100%;
+  background: #39b5a4; /* Verde água da barra */
+  border-radius: 10px;
+}
+
+.stat-subtitle {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.stat-footer {
+  font-size: 0.75rem;
+  color: #a0a6b1;
+}
+
+/* ========================================= */
+/* ATIVIDADES RECENTES */
+/* ========================================= */
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.see-all {
+  color: #e07a5f;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.post-item {
+  margin-bottom: 24px;
+}
+
+.post-user-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.user-avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #6b7280;
+}
+
+.post-time {
+  margin-left: auto;
+  color: #a0a6b1;
+  font-size: 0.85rem;
+}
+
+.post-book-info {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.post-cover {
+  width: 60px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.post-book-details h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.post-book-details .author {
+  display: block;
+  font-size: 0.85rem;
+  color: #a0a6b1;
+  margin-bottom: 8px;
+}
+
+.review-box {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 0.95rem;
+  color: #515760;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  background: white;
+}
+
+.post-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #8b92a0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* ========================================= */
+/* BOTTOM NAV (EXATAMENTE COMO O FIGMA) */
+/* ========================================= */
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+}
+
+.nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #a0a6b1;
+  cursor: pointer;
+}
+
+/* ========================================= */
+/* ESTILOS ADICIONADOS PARA OS ÍCONES SVG    */
+/* ========================================= */
+.nav-item svg {
+  transition: all 0.2s ease;
+}
+
+.nav-item.active {
+  background-color: #fdeee8; 
+  color: #e07a5f; 
+}
+
+.nav-item.active svg {
+  stroke: #e07a5f;
+}
+
+.action-btn svg {
+  color: #8b92a0;
+}
