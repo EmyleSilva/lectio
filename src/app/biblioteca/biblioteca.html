@@ -1,95 +1,409 @@
-<div class="mobile-container">
-  
-    <header class="top-bar">
+<!-- biblioteca.html -->
+
+<div class="library-page">
+
+  <!-- ========================================= -->
+  <!-- HEADER -->
+  <!-- ========================================= -->
+
+  <header class="top-bar">
+
+    <div class="top-left">
+
       <a routerLink="/perfil" class="avatar-link">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100" alt="Avatar" class="avatar-img">
+        <img
+          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100"
+          alt="Avatar"
+          class="avatar-img"
+        >
       </a>
-      <div class="logo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e07a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
-          <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20"/>
-          <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z"/>
-        </svg>
-        Lectio
+
+      <div>
+        <p class="welcome-text">
+          Seu espaço literário
+        </p>
+
+        <h1 class="page-title">
+          Minha Biblioteca
+        </h1>
       </div>
-      <button class="bell-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+    </div>
+
+    <div class="top-actions">
+
+      <button class="header-btn">
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+
+        </svg>
+
+      </button>
+
+      <button class="header-btn">
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
           <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+
         </svg>
+
       </button>
-    </header>
-  
-    <main class="feed-content">
-      
-      <section class="section-block">
-        <h1 class="serif-title" style="font-size: 1.8rem; margin-bottom: 8px;">Minha Biblioteca</h1>
-        <p style="color: #8b92a0; font-size: 0.9rem; margin-bottom: 24px;">Organize o seu acervo pessoal</p>
-  
+
+    </div>
+
+  </header>
+
+  <!-- ========================================= -->
+  <!-- HERO -->
+  <!-- ========================================= -->
+
+  <section class="library-hero">
+
+    <div>
+
+      <span class="hero-badge">
+        Biblioteca pessoal
+      </span>
+
+      <h2>
+        Organize suas leituras,
+        acompanhe seu progresso
+        e descubra novos favoritos.
+      </h2>
+
+      <p>
+        Um espaço para registrar livros lidos,
+        leituras atuais e futuras aventuras literárias.
+      </p>
+
+    </div>
+
+    <button class="primary-action-btn">
+      + Adicionar livro
+    </button>
+
+  </section>
+
+  <!-- ========================================= -->
+  <!-- MAIN LAYOUT -->
+  <!-- ========================================= -->
+
+  <main class="library-layout">
+
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================= -->
+
+    <section class="library-main">
+
+      <!-- FILTERS -->
+
+      <section class="section-card">
+
+        <div class="filters-top">
+
+          <div>
+
+            <h2 class="serif-title">
+              Seus livros
+            </h2>
+
+            <p class="section-description">
+              Gerencie sua coleção pessoal
+            </p>
+
+          </div>
+
+          <div class="search-box">
+
+            <svg width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+
+            </svg>
+
+            <input
+              type="text"
+              placeholder="Buscar livro..."
+            >
+
+          </div>
+
+        </div>
+
         <nav class="library-tabs">
-          <button class="tab-btn active">Todos</button>
-          <button class="tab-btn">Lendo</button>
-          <button class="tab-btn">Lidos</button>
-          <button class="tab-btn">Quero ler</button>
+
+          <button class="tab-btn active">
+            Todos
+          </button>
+
+          <button class="tab-btn">
+            Lendo
+          </button>
+
+          <button class="tab-btn">
+            Lidos
+          </button>
+
+          <button class="tab-btn">
+            Quero ler
+          </button>
+
         </nav>
+
       </section>
-  
+
+      <!-- GRID -->
+
       <section class="books-grid">
-        
-        <div class="book-card-item">
+
+        <!-- BOOK -->
+
+        <article class="book-card">
+
           <div class="cover-wrapper">
-            <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=200" alt="Capa" class="grid-cover">
-            <span class="badge badge-reading">Lendo</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=400"
+              alt="A Guerra da Papoula"
+              class="grid-cover"
+            >
+
+            <span class="badge badge-reading">
+              Lendo
+            </span>
+
           </div>
-          <h3>A Guerra Da Papoula</h3>
-          <span class="author">R.F Kuang</span>
-        </div>
-  
-        <div class="book-card-item">
+
+          <div class="book-info">
+
+            <h3>
+              A Guerra da Papoula
+            </h3>
+
+            <span class="author">
+              R. F. Kuang
+            </span>
+
+            <div class="book-footer">
+
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 42%;"></div>
+              </div>
+
+              <span class="progress-text">
+                42%
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- BOOK -->
+
+        <article class="book-card">
+
           <div class="cover-wrapper">
-            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=200" alt="Capa" class="grid-cover">
-            <span class="badge badge-done">Lido ✓</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400"
+              alt="Yellowface"
+              class="grid-cover"
+            >
+
+            <span class="badge badge-done">
+              Lido ✓
+            </span>
+
           </div>
-          <h3>Yellowface</h3>
-          <span class="author">R.F Kuang</span>
-        </div>
-  
-        <div class="book-card-item">
+
+          <div class="book-info">
+
+            <h3>
+              Yellowface
+            </h3>
+
+            <span class="author">
+              R. F. Kuang
+            </span>
+
+            <div class="rating">
+              ★★★★★
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- BOOK -->
+
+        <article class="book-card">
+
           <div class="cover-wrapper">
-            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=200" alt="Capa" class="grid-cover">
+
+            <img
+              src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400"
+              alt="O Hobbit"
+              class="grid-cover"
+            >
+
           </div>
-          <h3>O Hobbit</h3>
-          <span class="author">J.R.R. Tolkien</span>
-        </div>
-  
-        <div class="book-card-item">
+
+          <div class="book-info">
+
+            <h3>
+              O Hobbit
+            </h3>
+
+            <span class="author">
+              J. R. R. Tolkien
+            </span>
+
+            <button class="wishlist-btn">
+              Quero ler
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- BOOK -->
+
+        <article class="book-card">
+
           <div class="cover-wrapper">
-            <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=200" alt="Capa" class="grid-cover">
+
+            <img
+              src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=400"
+              alt="Dom Casmurro"
+              class="grid-cover"
+            >
+
           </div>
-          <h3>Dom Casmurro</h3>
-          <span class="author">Machado de Assis</span>
-        </div>
-  
+
+          <div class="book-info">
+
+            <h3>
+              Dom Casmurro
+            </h3>
+
+            <span class="author">
+              Machado de Assis
+            </span>
+
+            <button class="wishlist-btn">
+              Quero ler
+            </button>
+
+          </div>
+
+        </article>
+
       </section>
-  
-      <div class="action-footer">
-        <button class="primary-action-btn">Adicionar Livro</button>
-      </div>
-  
-    </main>
-  
-    <nav class="bottom-nav">
-      <a routerLink="/feed" class="nav-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-      </a>
-      <a style="cursor: pointer;" class="nav-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      </a>
-      <a routerLink="/biblioteca" class="nav-item active">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
-      </a>
-      <a routerLink="/perfil" class="nav-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-      </a>
-    </nav>
-  
-  </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SIDEBAR -->
+    <!-- ========================================= -->
+
+    <aside class="library-sidebar">
+
+      <!-- STATS -->
+
+      <section class="section-card stat-card">
+
+        <h2 class="serif-title">
+          Estatísticas
+        </h2>
+
+        <div class="stats-list">
+
+          <div class="stat-item">
+            <strong>38</strong>
+            <span>Total de livros</span>
+          </div>
+
+          <div class="stat-item">
+            <strong>12</strong>
+            <span>Lidos em 2026</span>
+          </div>
+
+          <div class="stat-item">
+            <strong>3</strong>
+            <span>Em andamento</span>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- FAVORITE AUTHORS -->
+
+      <section class="section-card">
+
+        <h2 class="serif-title">
+          Autores favoritos
+        </h2>
+
+        <div class="author-list">
+
+          <div class="author-item">
+            <strong>R. F. Kuang</strong>
+            <span>4 livros</span>
+          </div>
+
+          <div class="author-item">
+            <strong>Tolkien</strong>
+            <span>3 livros</span>
+          </div>
+
+          <div class="author-item">
+            <strong>Machado de Assis</strong>
+            <span>2 livros</span>
+          </div>
+
+        </div>
+
+      </section>
+
+    </aside>
+
+  </main>
+
+  <!-- ========================================= -->
+  <!-- NAV -->
+  <!-- ========================================= -->
+
+  <nav class="bottom-nav">
+
+    <a routerLink="/feed" class="nav-item">
+      🏠
+    </a>
+
+    <a routerLink="/biblioteca" class="nav-item active">
+      📚
+    </a>
+
+    <a routerLink="/perfil" class="nav-item">
+      👤
+    </a>
+
+  </nav>
+
+</div>
+```
