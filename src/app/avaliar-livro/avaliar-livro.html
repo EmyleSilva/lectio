@@ -1,0 +1,83 @@
+<div class="avaliar-page">
+
+  <header class="top-bar">
+    <a routerLink="/feed" class="voltar">← Voltar para o feed</a>
+
+    <div>
+      <p class="page-subtitle">Nova avaliação</p>
+      <h1>Avaliar leitura</h1>
+    </div>
+  </header>
+
+  <main class="avaliacao-layout">
+
+    <section class="livro-card">
+
+      <img
+        src="https://m.media-amazon.com/images/I/613YunBw8yL._AC_UF1000,1000_QL80_.jpg"
+        alt="A Guerra da Papoula"
+        class="livro-capa"
+      >
+
+      <div>
+        <span class="livro-tag">Livro selecionado</span>
+        <h2>A Guerra da Papoula</h2>
+        <p>R. F. Kuang</p>
+      </div>
+
+    </section>
+
+    <section class="form-card">
+
+      <form [formGroup]="avaliacaoForm" (ngSubmit)="enviarAvaliacao()">
+
+        <div class="form-group">
+          <label>Qual nota você dá para essa leitura?</label>
+
+          <div class="stars">
+            <button
+              type="button"
+              *ngFor="let estrela of [1, 2, 3, 4, 5]"
+              [class.active]="estrela <= (avaliacaoForm.value.nota || 0)"
+              (click)="selecionarNota(estrela)"
+            >
+              ★
+            </button>
+          </div>
+
+          <small *ngIf="campoInvalido('nota')">
+            Escolha uma nota de 1 a 5.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="avaliacao">Escreva sua avaliação</label>
+
+          <textarea
+            id="avaliacao"
+            rows="7"
+            formControlName="avaliacao"
+            placeholder="Conte o que você achou do livro..."
+          ></textarea>
+
+          <small *ngIf="campoInvalido('avaliacao')">
+            A avaliação precisa ter entre 1 e 500 caracteres.
+          </small>
+        </div>
+
+        <label class="checkbox-group">
+          <input type="checkbox" formControlName="spoiler">
+          Minha avaliação contém spoiler
+        </label>
+
+        <button class="submit-btn" type="submit">
+          Publicar avaliação
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</div>
