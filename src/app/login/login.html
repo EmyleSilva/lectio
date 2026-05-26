@@ -1,73 +1,71 @@
-<!-- login.component.html -->
-
 <div class="login-container">
 
-  <!-- LADO ESQUERDO -->
   <div class="left-side">
-
     <div class="overlay"></div>
-
     <div class="content">
       <h1>Lectio</h1>
-
-      <p>
-        Sua estante, reinventada
-      </p>
-
+      <p>Sua estante, reinventada</p>
       <span>
         Organize seus livros, acompanhe leituras
         e descubra novas histórias.
       </span>
     </div>
-
   </div>
 
-  <!-- LADO DIREITO -->
   <div class="right-side">
-
     <div class="login-card">
 
       <div class="header">
         <h2>Entrar</h2>
-
-        <p>
-          Faça login para acessar sua conta
-        </p>
+        <p>Faça login para acessar sua conta</p>
       </div>
 
-      <form>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 
         <div class="input-group">
           <label>Email</label>
-
           <input
             type="email"
+            name="email"
+            [(ngModel)]="credentials.email"
+            #emailInput="ngModel"
             placeholder="exemplo@email.com"
+            required
+            email
           >
+          <span class="error" *ngIf="emailInput.invalid && emailInput.touched">
+            <span *ngIf="emailInput.errors?.['required']">O e-mail é obrigatório.</span>
+            <span *ngIf="emailInput.errors?.['email']">Insira um e-mail válido.</span>
+          </span>
         </div>
 
         <div class="input-group">
           <label>Senha</label>
-
           <div class="password-field">
-
             <input
-              type="password"
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              [(ngModel)]="credentials.password"
+              #passwordInput="ngModel"
               placeholder="Digite sua senha"
+              required
+              minlength="6"
             >
-
-            <button type="button">
-              👁
+            <button type="button" (click)="togglePasswordVisibility()">
+              {{ showPassword ? '𓂀' : '👁' }}
             </button>
-
           </div>
+          <span class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+            <span *ngIf="passwordInput.errors?.['required']">A senha é obrigatória.</span>
+            <span *ngIf="passwordInput.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres.</span>
+          </span>
         </div>
 
         <a href="#" class="forgot-password">
           Esqueceu sua senha?
         </a>
 
-        <button class="login-button" routerLink="/feed">
+        <button type="submit" class="login-button" [disabled]="loginForm.invalid">
           Entrar
         </button>
 
@@ -79,7 +77,6 @@
       </div>
 
     </div>
-
   </div>
 
 </div>
