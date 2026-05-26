@@ -4,6 +4,7 @@ import { Cadastro } from './cadastro/cadastro';
 import { Perfil } from './perfil/perfil';
 import { Feed } from './feed/feed';
 import { Biblioteca } from './biblioteca/biblioteca';
+import { AvaliarLivro } from './avaliar-livro/avaliar-livro';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'cadastro', component: Cadastro },
   { path: 'perfil', component: Perfil },
   { path: 'feed', component: Feed },
-  { path: 'biblioteca', component: Biblioteca }
+  { path: 'biblioteca', component: Biblioteca },
+  { path: 'avaliar', component: AvaliarLivro }
 ];

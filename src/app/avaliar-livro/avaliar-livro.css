@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.avaliar-page {
+  min-height: 100vh;
+  background: #f6f3ee;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #2f3748;
+  padding: 32px 16px;
+}
+
+.top-bar {
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
+
+.voltar {
+  display: inline-block;
+  margin-bottom: 18px;
+  text-decoration: none;
+  color: #7a5c3e;
+  font-weight: 600;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+.page-subtitle {
+  color: #8b92a0;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.top-bar h1 {
+  font-size: 34px;
+  font-family: Georgia, serif;
+}
+
+.avaliacao-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.livro-card,
+.form-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.livro-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.livro-capa {
+  width: 100%;
+  max-height: 420px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.livro-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  background: #f3e8df;
+  color: #7a5c3e;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.livro-card h2 {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.livro-card p {
+  color: #697386;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d8d1c7;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #2f3748;
+  background: #fffdf9;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #7a5c3e;
+}
+
+small {
+  display: block;
+  margin-top: 6px;
+  color: #c0392b;
+  font-size: 13px;
+}
+
+.stars {
+  display: flex;
+  gap: 8px;
+}
+
+.stars button {
+  border: none;
+  background: none;
+  font-size: 40px;
+  color: #c9c1b8;
+  cursor: pointer;
+}
+
+.stars button.active {
+  color: #d99a24;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #2f3748;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #1f2633;
+}
+
+@media (max-width: 768px) {
+  .avaliacao-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .livro-capa {
+    max-height: 320px;
+  }
+}
