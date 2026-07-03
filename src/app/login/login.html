@@ -33,12 +33,12 @@
             required
             email
           >
-          <span class="error" *ngIf="emailInput.invalid && emailInput.touched">
+          <span class="error" *ngIf="emailInput.invalid && emailInput.touched" style="color: red; font-size: 0.85em;">
             <span *ngIf="emailInput.errors?.['required']">O e-mail é obrigatório.</span>
             <span *ngIf="emailInput.errors?.['email']">Insira um e-mail válido.</span>
           </span>
         </div>
-
+      
         <div class="input-group">
           <label>Senha</label>
           <div class="password-field">
@@ -55,20 +55,22 @@
               {{ showPassword ? '𓂀' : '👁' }}
             </button>
           </div>
-          <span class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+          <span class="error" *ngIf="passwordInput.invalid && passwordInput.touched" style="color: red; font-size: 0.85em;">
             <span *ngIf="passwordInput.errors?.['required']">A senha é obrigatória.</span>
             <span *ngIf="passwordInput.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres.</span>
           </span>
         </div>
-
+      
+        <span class="error" *ngIf="erro" style="color: red; display: block; margin-bottom: 10px;">{{ erro }}</span>
+      
         <a href="#" class="forgot-password">
           Esqueceu sua senha?
         </a>
-
+      
         <button type="submit" class="login-button" [disabled]="loginForm.invalid">
           Entrar
         </button>
-
+      
       </form>
 
       <div class="register">

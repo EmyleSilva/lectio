@@ -33,64 +33,46 @@
         </p>
       </div>
 
-      <form>
-
+      <form #cadastroForm="ngForm" (ngSubmit)="onSubmit(cadastroForm)">
+  
         <div class="input-group">
           <label>Nome</label>
-
-          <input
-            type="text"
-            placeholder="Seu nome completo"
-          >
+          <input type="text" name="nome" [(ngModel)]="dados.nome" placeholder="Seu nome completo" required>
         </div>
-
+      
         <div class="input-group">
           <label>Email</label>
-
-          <input
-            type="email"
-            placeholder="exemplo@email.com"
-          >
+          <input type="email" name="email" [(ngModel)]="dados.email" placeholder="exemplo@email.com" required email>
         </div>
-
+      
         <div class="input-group">
           <label>Senha</label>
-
           <div class="password-field">
-
-            <input
-              type="password"
-              placeholder="Crie uma senha"
-            >
-
-            <button type="button">
+            <input [type]="showPassword ? 'text' : 'password'" name="senha" [(ngModel)]="dados.senha" placeholder="Crie uma senha" required minlength="6">
+            
+            <button type="button" (click)="togglePassword()">
               👁
             </button>
-
           </div>
         </div>
-
+      
         <div class="input-group">
           <label>Confirmar Senha</label>
-
           <div class="password-field">
-
-            <input
-              type="password"
-              placeholder="Confirme sua senha"
-            >
-
-            <button type="button">
+            <input [type]="showConfirmPassword ? 'text' : 'password'" name="confirmarSenha" [(ngModel)]="dados.confirmarSenha" placeholder="Confirme sua senha" required>
+            
+            <button type="button" (click)="toggleConfirmPassword()">
               👁
             </button>
-
           </div>
         </div>
-
-        <button class="login-button" routerLink="/login">
+      
+        <span class="error" *ngIf="erro" style="color: red; display: block; margin-bottom: 10px;">{{ erro }}</span>
+      
+        <button class="login-button" type="submit">
           Criar Conta
         </button>
-
+      
       </form>
 
       <div class="register">

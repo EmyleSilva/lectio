@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -11,33 +13,28 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.css',
 })
 export class Login {
-  // Objeto para vincular aos inputs via ngModel
-  credentials = {
-    email: '',
-    password: ''
-  };
-
+  credentials = { email: '', password: '' };
   showPassword = false;
+  erro = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private api: ApiService, private session: SessionService) {}
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-  // Recebe o formulário (NgForm) submetido pelo HTML
   onSubmit(loginForm: NgForm) {
     if (loginForm.valid) {
-      console.log('Dados do login submetidos:', this.credentials);
-      
-      // Lógica de autenticação entraria aqui
-      
-      this.router.navigate(['/feed']);
+      this.api.login(this.credentials.email, this.credentials.password).subscribe({
+        next: (usuario) => {
+          this.session.usuario.set(usuario);
+          this.router.navigate(['/biblioteca']); 
+        },
+        error: () => { this.erro = 'E-mail ou senha inválidos'; }
+      });
     } else {
-      // Força a exibição dos erros se o utilizador tentar submeter um formulário inválido
       Object.keys(loginForm.controls).forEach(field => {
-        const control = loginForm.controls[field];
-        control.markAsTouched({ onlySelf: true });
+        loginForm.controls[field].markAsTouched({ onlySelf: true });
       });
     }
   }
