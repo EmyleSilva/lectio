@@ -25,6 +25,25 @@ export class ApiService {
     return this.http.get<any[]>(`${environment.apiUrl}/livros`);
   }
 
+  // ─── Estante ───────────────────────────────────────────────────────────────
+
+  criarEstante(usuarioId: number, dados: { nome: string; tipo: string; descricao: string }) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/usuarios/${usuarioId}/estantes`,
+      dados,
+      this.ngrokHeaders
+    );
+  }
+
+  listarEstantes(usuarioId: number) {
+    return this.http.get<any[]>(
+      `${environment.apiUrl}/usuarios/${usuarioId}/estantes`,
+      this.ngrokHeaders
+    );
+  }
+
+  // ─── EstanteLivro ──────────────────────────────────────────────────────────
+
   listarLivrosDaEstante(estanteId: number) {
     return this.http.get<any[]>(`${environment.apiUrl}/estantes/${estanteId}/livros`);
   }
@@ -36,4 +55,4 @@ export class ApiService {
   removerLivroDaEstante(estanteId: number, estanteLivroId: number) {
     return this.http.delete(`${environment.apiUrl}/estantes/${estanteId}/livros/${estanteLivroId}`);
   }
-}
+}

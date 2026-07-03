@@ -33,29 +33,21 @@
     <div class="top-actions">
 
       <button class="header-btn">
-
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
-
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-
         </svg>
-
       </button>
 
       <button class="header-btn">
-
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
-
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
           <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-
         </svg>
-
       </button>
 
     </div>
@@ -87,8 +79,8 @@
 
     </div>
 
-    <button class="primary-action-btn">
-      + Adicionar livro
+    <button class="primary-action-btn" (click)="abrirModal()">
+      + Nova estante
     </button>
 
   </section>
@@ -105,209 +97,62 @@
 
     <section class="library-main">
 
-      <!-- FILTERS -->
+      <!-- FILTROS -->
 
       <section class="section-card">
 
         <div class="filters-top">
 
           <div>
-
-            <h2 class="serif-title">
-              Seus livros
-            </h2>
-
-            <p class="section-description">
-              Gerencie sua coleção pessoal
-            </p>
-
+            <h2 class="serif-title">Suas estantes</h2>
+            <p class="section-description">Gerencie suas coleções pessoais</p>
           </div>
 
           <div class="search-box">
-
             <svg width="18" height="18" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
-
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-
             </svg>
-
-            <input
-              type="text"
-              placeholder="Buscar livro..."
-            >
-
+            <input type="text" placeholder="Buscar estante...">
           </div>
 
         </div>
 
-        <nav class="library-tabs">
-
-          <button class="tab-btn active">
-            Todos
-          </button>
-
-          <button class="tab-btn">
-            Lendo
-          </button>
-
-          <button class="tab-btn">
-            Lidos
-          </button>
-
-          <button class="tab-btn">
-            Quero ler
-          </button>
-
-        </nav>
-
       </section>
 
-      <!-- GRID -->
+      <!-- GRID DE ESTANTES -->
 
       <section class="books-grid">
 
-        <!-- BOOK -->
+        <!-- Estado vazio -->
+        <div
+          *ngIf="estantes.length === 0"
+          class="book-card"
+          style="grid-column: 1 / -1; text-align: center; padding: 2rem; opacity: 0.6;"
+        >
+          <p>Nenhuma estante criada ainda.</p>
+          <button class="wishlist-btn" (click)="abrirModal()">
+            Criar primeira estante
+          </button>
+        </div>
 
-        <article class="book-card">
+        <!-- Estante carregada da API -->
+        <article class="book-card" *ngFor="let estante of estantes">
 
-          <div class="cover-wrapper">
+          <div class="book-info" style="padding: 1.25rem;">
 
-            <img
-              src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=400"
-              alt="A Guerra da Papoula"
-              class="grid-cover"
+            <h3>{{ estante.nome }}</h3>
+
+            <span class="author">{{ estante.tipo }}</span>
+
+            <p
+              *ngIf="estante.descricao"
+              style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;"
             >
-
-            <span class="badge badge-reading">
-              Lendo
-            </span>
-
-          </div>
-
-          <div class="book-info">
-
-            <h3>
-              A Guerra da Papoula
-            </h3>
-
-            <span class="author">
-              R. F. Kuang
-            </span>
-
-            <div class="book-footer">
-
-              <div class="progress-track">
-                <div class="progress-fill" style="width: 42%;"></div>
-              </div>
-
-              <span class="progress-text">
-                42%
-              </span>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- BOOK -->
-
-        <article class="book-card">
-
-          <div class="cover-wrapper">
-
-            <img
-              src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400"
-              alt="Yellowface"
-              class="grid-cover"
-            >
-
-            <span class="badge badge-done">
-              Lido ✓
-            </span>
-
-          </div>
-
-          <div class="book-info">
-
-            <h3>
-              Yellowface
-            </h3>
-
-            <span class="author">
-              R. F. Kuang
-            </span>
-
-            <div class="rating">
-              ★★★★★
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- BOOK -->
-
-        <article class="book-card">
-
-          <div class="cover-wrapper">
-
-            <img
-              src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400"
-              alt="O Hobbit"
-              class="grid-cover"
-            >
-
-          </div>
-
-          <div class="book-info">
-
-            <h3>
-              O Hobbit
-            </h3>
-
-            <span class="author">
-              J. R. R. Tolkien
-            </span>
-
-            <button class="wishlist-btn">
-              Quero ler
-            </button>
-
-          </div>
-
-        </article>
-
-        <!-- BOOK -->
-
-        <article class="book-card">
-
-          <div class="cover-wrapper">
-
-            <img
-              src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=400"
-              alt="Dom Casmurro"
-              class="grid-cover"
-            >
-
-          </div>
-
-          <div class="book-info">
-
-            <h3>
-              Dom Casmurro
-            </h3>
-
-            <span class="author">
-              Machado de Assis
-            </span>
-
-            <button class="wishlist-btn">
-              Quero ler
-            </button>
+              {{ estante.descricao }}
+            </p>
 
           </div>
 
@@ -334,47 +179,8 @@
         <div class="stats-list">
 
           <div class="stat-item">
-            <strong>38</strong>
-            <span>Total de livros</span>
-          </div>
-
-          <div class="stat-item">
-            <strong>12</strong>
-            <span>Lidos em 2026</span>
-          </div>
-
-          <div class="stat-item">
-            <strong>3</strong>
-            <span>Em andamento</span>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- FAVORITE AUTHORS -->
-
-      <section class="section-card">
-
-        <h2 class="serif-title">
-          Autores favoritos
-        </h2>
-
-        <div class="author-list">
-
-          <div class="author-item">
-            <strong>R. F. Kuang</strong>
-            <span>4 livros</span>
-          </div>
-
-          <div class="author-item">
-            <strong>Tolkien</strong>
-            <span>3 livros</span>
-          </div>
-
-          <div class="author-item">
-            <strong>Machado de Assis</strong>
-            <span>2 livros</span>
+            <strong>{{ estantes.length }}</strong>
+            <span>Estantes criadas</span>
           </div>
 
         </div>
@@ -391,19 +197,87 @@
 
   <nav class="bottom-nav">
 
-    <a routerLink="/feed" class="nav-item">
-      🏠
-    </a>
+    <a routerLink="/feed" class="nav-item">🏠</a>
 
-    <a routerLink="/biblioteca" class="nav-item active">
-      📚
-    </a>
+    <a routerLink="/biblioteca" class="nav-item active">📚</a>
 
-    <a routerLink="/perfil" class="nav-item">
-      👤
-    </a>
+    <a routerLink="/perfil" class="nav-item">👤</a>
 
   </nav>
 
 </div>
-```
+
+<!-- ========================================= -->
+<!-- MODAL: CRIAR ESTANTE                      -->
+<!-- ========================================= -->
+
+<div class="modal-overlay" *ngIf="mostrarModal" (click)="fecharModal()">
+
+  <div class="modal-card" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <h2>Nova Estante</h2>
+      <button class="modal-close" (click)="fecharModal()">✕</button>
+    </div>
+
+    <!-- Feedback de erro -->
+    <p *ngIf="erro" class="form-error">{{ erro }}</p>
+
+    <!-- Feedback de sucesso -->
+    <p *ngIf="sucesso" class="form-success">{{ sucesso }}</p>
+
+    <form (ngSubmit)="criarEstante()" #estanteForm="ngForm">
+
+      <!-- Nome -->
+      <div class="form-group">
+        <label for="estante-nome">Nome *</label>
+        <input
+          id="estante-nome"
+          type="text"
+          placeholder="Ex: Leituras de 2026"
+          [(ngModel)]="novaEstante.nome"
+          name="nome"
+          required
+          maxlength="80"
+        >
+      </div>
+
+      <!-- Tipo -->
+      <div class="form-group">
+        <label for="estante-tipo">Tipo</label>
+        <select
+          id="estante-tipo"
+          [(ngModel)]="novaEstante.tipo"
+          name="tipo"
+        >
+          <option value="CUSTOMIZADA">Customizada</option>
+          <option value="PADRAO">Padrão</option>
+        </select>
+      </div>
+
+      <!-- Descrição -->
+      <div class="form-group">
+        <label for="estante-descricao">Descrição</label>
+        <textarea
+          id="estante-descricao"
+          placeholder="Descreva sua estante (opcional)"
+          [(ngModel)]="novaEstante.descricao"
+          name="descricao"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" (click)="fecharModal()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="salvando">
+          {{ salvando ? 'Salvando...' : 'Criar Estante' }}
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
