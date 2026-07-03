@@ -55,12 +55,20 @@
 
 .perfil-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.profile-column {
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
 .profile-card,
 .favorites-card,
+.shelf-card,
 .activity-card {
   background: white;
   border-radius: 28px;
@@ -69,18 +77,21 @@
 }
 
 .profile-card {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: stretch;
+  min-height: 0;
 }
 
 .avatar-wrapper {
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
   border: 6px solid #f4f1ec;
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
 }
 
 .avatar-wrapper img {
@@ -101,27 +112,30 @@
 }
 
 .profile-info p {
-  line-height: 1.75;
+  line-height: 1.6;
   color: #515760;
+  margin: 0;
+  max-width: 560px;
 }
 
 .profile-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 14px;
+  align-self: stretch;
 }
 
 .profile-stats div {
-  padding: 20px;
-  border-radius: 24px;
+  padding: 16px;
+  border-radius: 20px;
   background: #f4f1ec;
   text-align: center;
 }
 
 .profile-stats strong {
   display: block;
-  font-size: 2rem;
-  margin-bottom: 8px;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
 }
 
 .profile-stats span {
@@ -292,6 +306,109 @@
   margin-top: 8px;
 }
 
+.shelf-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 18px;
+}
+
+.shelf-form input,
+.field-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #dcdcdc;
+  border-radius: 16px;
+  font-size: 1rem;
+  background: white;
+}
+
+.shelf-form input:focus,
+.field-group select:focus {
+  outline: none;
+  border-color: #e07a5f;
+  box-shadow: 0 0 0 4px rgba(224, 122, 95, 0.12);
+}
+
+.shelf-form button,
+.add-book-button {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 16px;
+  background: #e07a5f;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.shelf-builder {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.field-group {
+  display: grid;
+  gap: 8px;
+}
+
+.field-group span {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.collection-list {
+  display: grid;
+  gap: 16px;
+}
+
+.collection-item {
+  padding: 18px;
+  border-radius: 22px;
+  background: #f7f4ef;
+}
+
+.collection-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.collection-header strong {
+  font-size: 1.05rem;
+}
+
+.collection-count {
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.collection-book-card {
+  background: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.collection-book-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.collection-book-card .chip-remove {
+  margin-top: 10px;
+  padding: 0;
+  color: #e07a5f;
+  font-weight: 700;
+}
+
+.activity-card {
+  align-self: stretch;
+}
+
 .activity-item {
   display: flex;
   gap: 18px;
@@ -345,5 +462,9 @@
 
   .edit-button {
     width: 100%;
+  }
+
+  .shelf-form {
+    grid-template-columns: 1fr;
   }
 }

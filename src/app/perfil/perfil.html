@@ -14,131 +14,131 @@
   </header>
 
   <main class="perfil-grid">
-    <section class="profile-card">
-      <div class="avatar-wrapper">
-        <img
-          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400"
-          alt="Foto de perfil"
-        />
-      </div>
-
-      <div class="profile-info">
-        <h2>Lucas Romero</h2>
-        <span class="username">@lucas.leitor29</span>
-        <p>
-          Argentino, 31 anos, estudante da Universidade Federal de Minas Gerais,
-          gosta de ler por lazer no transporte e antes de dormir.
-        </p>
-      </div>
-
-      <div class="profile-stats">
-        <div>
-          <strong>9</strong>
-          <span>Lidos</span>
+    <div class="profile-column">
+      <section class="profile-card">
+        <div class="avatar-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400"
+            alt="Foto de perfil"
+          />
         </div>
-        <div>
-          <strong>3</strong>
-          <span>Lendo</span>
-        </div>
-        <div>
-          <strong>1</strong>
-          <span>Quero Ler</span>
-        </div>
-      </div>
-    </section>
 
-    <section class="lists-card">
+        <div class="profile-info">
+          <h2>Lucas Romero</h2>
+          <span class="username">@lucas.leitor29</span>
+          <p>
+            Argentino, 31 anos, estudante da Universidade Federal de Minas Gerais,
+            gosta de ler por lazer no transporte e antes de dormir.
+          </p>
+        </div>
+
+        <div class="profile-stats">
+          <div>
+            <strong>9</strong>
+            <span>Lidos</span>
+          </div>
+          <div>
+            <strong>3</strong>
+            <span>Lendo</span>
+          </div>
+          <div>
+            <strong>1</strong>
+            <span>Quero Ler</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="activity-card">
+        <div class="section-title">
+          <h2>Minhas Atividades Recentes</h2>
+          <a href="#">Ver tudo</a>
+        </div>
+
+        <article class="activity-item">
+          <img src="https://m.media-amazon.com/images/I/91M9xPIf10L.jpg" alt="O Hobbit" />
+          <div class="activity-details">
+            <p><strong>2 de dez.</strong> Avaliou <strong>O Hobbit</strong> de J. R. R. Tolkien</p>
+            <p class="comment">★★★★</p>
+            <p class="comment">“Um grande clássico!”</p>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section class="shelf-card">
       <div class="section-title">
-        <h2>Minhas Listas</h2>
-        <span>Categorias</span>
+        <h2>Gerenciar Estante</h2>
+        <span>Crie coleções e organize seus livros</span>
       </div>
 
-      <form class="lists-form" (submit)="addList(); $event.preventDefault()">
+      <div class="collection-list">
+        <article class="collection-item" *ngFor="let collection of collections(); let i = index">
+          <div class="collection-header">
+            <div>
+              <strong>{{ collection.name }}</strong>
+              <p class="collection-count">{{ collection.books.length }} livro(s)</p>
+            </div>
+            <button type="button" class="remove-button" (click)="removeCollection(i)">✕</button>
+          </div>
+
+          <div class="favorite-list">
+            <article class="favorite-item collection-book-card" *ngFor="let book of collection.books; let j = index">
+              <img *ngIf="book.cover" [src]="book.cover" [alt]="book.title" />
+              <div class="collection-book-content">
+                <strong>{{ book.title }}</strong>
+                <span *ngIf="book.cover">{{ book.author }}</span>
+                <button type="button" class="chip-remove" (click)="removeBook(i, j)">Remover</button>
+              </div>
+            </article>
+            <p class="empty-state" *ngIf="collection.books.length === 0">Nenhum livro nesta coleção ainda.</p>
+          </div>
+        </article>
+      </div>
+
+      <form class="shelf-form" (submit)="createCollection(); $event.preventDefault()">
         <input
           type="text"
-          placeholder="Criar nova lista, ex: Infantis"
-          [value]="newList()"
-          (input)="updateNewList($event.target.value)"
+          placeholder="Criar nova coleção, ex: Favoritos da Vida"
+          [value]="newCollectionName()"
+          (input)="updateNewCollectionName($event.target.value)"
         />
-        <button type="submit">Adicionar</button>
+        <button type="submit">Criar</button>
       </form>
 
-      <div class="list-grid">
-        <article class="list-folder" *ngFor="let list of lists(); let i = index">
-          <div class="folder-left">
-            <span class="folder-icon">📁</span>
-            <div>
-              <strong>{{ list }}</strong>
-              
-            </div>
-          </div>
-          <div class="folder-actions">
-            <button type="button" class="open-link">Abrir</button>
-            <button type="button" class="remove-button" (click)="removeList(i)">✕</button>
-          </div>
-        </article>
-        <p class="empty-state" *ngIf="lists().length === 0">Nenhuma lista criada ainda.</p>
-      </div>
-    </section>
+      <div class="shelf-builder">
+        <label class="field-group">
+          <span>Selecione a coleção</span>
+          <select [value]="selectedCollectionName()" (change)="updateSelectedCollection($any($event.target).value)">
+            <option *ngFor="let collection of collections()" [value]="collection.name">
+              {{ collection.name }}
+            </option>
+          </select>
+        </label>
 
-    <section class="favorites-card">
-      <div class="section-title">
-        <h2>Favoritos da Vida</h2>
-      </div>
+        <label class="field-group">
+          <span>Escolha o livro</span>
+          <select [value]="selectedBookTitle()" (change)="updateSelectedBook($any($event.target).value)">
+            <option *ngFor="let book of availableBooks" [value]="book.title">
+              {{ book.title }}
+            </option>
+            <option value="outro" style="color: #969696 ">Outro... +</option>
+          </select>
+        </label>
 
-      <div class="favorite-list">
-        <article class="favorite-item">
-          <img src="https://m.media-amazon.com/images/I/91M9xPIf10L.jpg" alt="O Hobbit" />
-          <div>
-            <p class="comment">★★★★</p>
-            <strong>O Hobbit</strong>
-            <span>J. R. R. Tolkien</span>
-          </div>
-        </article>
+        <label class="field-group" *ngIf="isCustomBook()">
+          <span style="color: #b4b2b2">Nome do livro</span>
+          <input
+            type="text"
+            style="padding: 10px;border: 1px solid #ccc; border-radius: 10px;"
+            placeholder="Digite o nome do livro"
+            [value]="customBookTitle()"
+            (input)="updateCustomBookTitle($any($event.target).value)"
+          />
+        </label>
 
-        <article class="favorite-item">
-          <img src="https://m.media-amazon.com/images/I/613YunBw8yL._AC_UF1000,1000_QL80_.jpg" alt="A Guerra da Papoula" />
-          <div>
-            <p class="comment">★</p>
-            <strong>A Guerra da Papoula</strong>
-            <span>R. F. Kuang</span>
-          </div>
-        </article>
-
-        <article class="favorite-item">
-          <img src="https://skoob.s3.amazonaws.com/livros/122442868/KATABASIS_1738777025122442868SK-V11738777025B.jpg" alt="Katabasis" />
-          <div>
-            <p class="comment">★★★★★</p>
-            <strong>Katabasis</strong>
-            <span>R. F. Kuang</span>
-          </div>
-        </article>
-
-        <article class="favorite-item">
-          <img src="https://m.media-amazon.com/images/I/818fnagZbWL._UF1000,1000_QL80_.jpg" alt="A República do Dragão" />
-          <div>
-            <p class="comment">★★★★</p>
-            <strong>A República do Dragão</strong>
-            <span>R. F. Kuang</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="activity-card">
-      <div class="section-title">
-        <h2>Minhas Atividades Recentes</h2>
-        <a href="#">Ver tudo</a>
+        <button type="button" class="add-book-button" (click)="addBookToCollection()">Adicionar livro</button>
       </div>
 
-      <article class="activity-item">
-        <img src="https://m.media-amazon.com/images/I/91M9xPIf10L.jpg" alt="O Hobbit" />
-        <div class="activity-details">
-          <p><strong>2 de dez.</strong> Avaliou <strong>O Hobbit</strong> de J. R. R. Tolkien</p>
-          <p class="comment">★★★★</p>
-          <p class="comment">“Um grande clássico!”</p>
-        </div>
-      </article>
-    </section>
-  </main>
+
+    </section>  </main>
 </div>
